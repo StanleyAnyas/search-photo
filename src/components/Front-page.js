@@ -22,13 +22,13 @@ export const FrontPage = () => {
     const searchPhoto = () => {
         axios.get(`https://api.unsplash.com/search/photos?per_page=12&client_id=${accessKey}&query=${searchValue}`)
         .then((response) => {
-          const newImages = response ? response.data.results.map((result) => ({
+          const newImages = response.data.results.map((result) => ({
             id: result.id ? result.id : "No id",
             description: result.description ? result.description : "No description",
             nameOfPicture: result.alt_description ? result.alt_description : "No name of picture",
             name: result.user.name ? result.user.name : "No name",
-            url: result.urls.regular ? result.urls.regular : "No url",
-          })) : 'https://images.unsplash.com/photo-1631630000000-0d0d0d0d0d0d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80';
+            url: result.urls.regular ? result.urls.regular : `https://api.unsplash.com/photos/random?client_id=${accessKey}`,
+          }))
           setImages(newImages);
         })
         .catch((error) => {
@@ -49,14 +49,14 @@ export const FrontPage = () => {
                 </Toolbar>
             </AppBar>
             <Stack spacing={2} mt={10} direction="row" justifyContent="center" alignItems="center">
-                <TextField type={Text} label="Search photo" variant="outlined" name="search" onChange={inputChanged} onKeyDown={(event) => { 
+                <TextField type={Text} label="search photo" variant="outlined" name="search" onChange={inputChanged} onKeyDown={(event) => { 
                     if (event.keyCode === 13)
                         searchPhoto();
                     }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setSearchValue(" ")}>
+                                <IconButton onClick={() => setSearchValue("")}>
                                     x
                                 </IconButton>
                             </InputAdornment>
