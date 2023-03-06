@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useCallback, useState } from "react";
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import IconButton from'@mui/material/IconButton';
@@ -9,30 +9,30 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 import { Grid } from '@mui/material';
 import axios from "axios";
-import accessKey from "../key";
+import accessKey2 from "../key2";
 
-export const FrontPage = () => {
+export const FrontPage = () => { 
     const [searchValue, setSearchValue] = useState("");
     const [images, setImages] = useState([]);
     //const [loading, setLoading] = useState(false);
 
    
-    const searchPhoto = () => {
-        axios.get(`https://api.unsplash.com/search/photos?per_page=12&client_id=${accessKey}&query=${searchValue}`)
+    const searchPhoto = useCallback(() => {
+        axios.get(`https://api.unsplash.com/search/photos?per_page=12&client_id=${accessKey2}&query=${searchValue}`)
         .then((response) => {
           const newImages = response.data.results.map((result) => ({
             id: result.id ? result.id : "No id",
             description: result.description ? result.description : "No description",
             nameOfPicture: result.alt_description ? result.alt_description : "No name of picture",
             name: result.user.name ? result.user.name : "No name",
-            url: result.urls.regular ? result.urls.regular : `https://api.unsplash.com/photos/random?client_id=${accessKey}`,
+            url: result.urls.regular ? result.urls.regular : `https://api.unsplash.com/photos/random?client_id=${accessKey2}`,
           }))
           setImages(newImages);
         })
         .catch((error) => {
           console.log(error);
         });
-    };
+    }, [searchValue]);
     const inputChanged = (event) => {
         setSearchValue(event.target.value);
       }
