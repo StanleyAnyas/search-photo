@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import IconButton from'@mui/material/IconButton';
@@ -16,9 +16,7 @@ export const FrontPage = () => {
     const [images, setImages] = useState([]);
     //const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        searchPhoto();
-    }, []);
+   
     const searchPhoto = () => {
         axios.get(`https://api.unsplash.com/search/photos?per_page=12&client_id=${accessKey}&query=${searchValue}`)
         .then((response) => {
