@@ -15,17 +15,16 @@ export const FrontPage = () => {
     const [searchValue, setSearchValue] = useState("");
     const [images, setImages] = useState([]);
     //const [loading, setLoading] = useState(false);
-
    
     const searchPhoto = useCallback(() => {
-        axios.get(`https://api.unsplash.com/search/photos?per_page=12&client_id=${accessKey}&query=${searchValue}`)
+        axios.get(`https://api.unsplash.com/search/photos?per_page=24&client_id=${accessKey}&query=${searchValue}`)
         .then((response) => {
           const newImages = response.data.results.map((result) => ({
             id: result.id ? result.id : "No id",
             description: result.description ? result.description : "No description",
             nameOfPicture: result.alt_description ? result.alt_description : "No name of picture",
             name: result.user.name ? result.user.name : "No name",
-            url: result.urls.regular ? result.urls.regular : `https://api.unsplash.com/photos/random?client_id=${accessKey}`,
+            url: result.urls.regular ? result.urls.regular : `https://api.unsplash.com/photos/random`,
           }))
           setImages(newImages);
         })
@@ -54,7 +53,10 @@ export const FrontPage = () => {
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setSearchValue("")}>
+                                <IconButton onClick={(event) => {
+                                    event.preventDefault();
+                                    setSearchValue("");
+                                }}>
                                     x
                                 </IconButton>
                             </InputAdornment>
