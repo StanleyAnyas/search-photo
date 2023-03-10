@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.c8e0a6c3.css",
-    "main.js": "/static/js/main.804a2367.js",
-    "static/js/787.5a8c54cb.chunk.js": "/static/js/787.5a8c54cb.chunk.js",
-    "index.html": "/index.html",
-    "main.c8e0a6c3.css.map": "/static/css/main.c8e0a6c3.css.map",
-    "main.804a2367.js.map": "/static/js/main.804a2367.js.map",
-    "787.5a8c54cb.chunk.js.map": "/static/js/787.5a8c54cb.chunk.js.map"
+    "main.css": "/StanleyAnyas/search-photo-with-unsplash-api/static/css/main.c8e0a6c3.css",
+    "main.js": "/StanleyAnyas/search-photo-with-unsplash-api/static/js/main.37684d80.js",
+    "static/js/787.5a8c54cb.chunk.js": "/StanleyAnyas/search-photo-with-unsplash-api/static/js/787.5a8c54cb.chunk.js",
+    "index.html": "/StanleyAnyas/search-photo-with-unsplash-api/index.html",
+    "main.c8e0a6c3.css.map": "/StanleyAnyas/search-photo-with-unsplash-api/static/css/main.c8e0a6c3.css.map",
+    "main.37684d80.js.map": "/StanleyAnyas/search-photo-with-unsplash-api/static/js/main.37684d80.js.map",
+    "787.5a8c54cb.chunk.js.map": "/StanleyAnyas/search-photo-with-unsplash-api/static/js/787.5a8c54cb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c8e0a6c3.css",
-    "static/js/main.804a2367.js"
+    "static/js/main.37684d80.js"
   ]
 }
