@@ -2,7 +2,7 @@
   "name": "photo-gallery",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/StanleyAnyas/search-photo-with-unsplash-api",
+  "homepage": "https://StanleyAnyas.github.io/search-photo-with-unsplash-api",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
