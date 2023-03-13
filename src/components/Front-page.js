@@ -32,7 +32,7 @@ export const FrontPage = () => {
         .catch((error) => {
           console.log(error);
         });
-    }, [searchValue]);
+    }, [searchValue, accessKey]);
     const inputChanged = (event) => {
         setSearchValue(event.target.value);
       }
