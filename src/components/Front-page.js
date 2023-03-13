@@ -9,12 +9,13 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 import { Grid } from '@mui/material';
 import axios from "axios";
-import accessKey from "./key";
+//import accessKey from "./key";
 
 export const FrontPage = () => { 
     const [searchValue, setSearchValue] = useState("");
     const [images, setImages] = useState([]);
-    //const [loading, setLoading] = useState(false);
+    //console.log("key", process.env.REACT_APP_ACCESS_KEY)
+    const accessKey = process.env.REACT_APP_ACCESS_KEY;
    
     const searchPhoto = useCallback(() => {
         axios.get(`https://api.unsplash.com/search/photos?per_page=24&client_id=${accessKey}&query=${searchValue}`)
@@ -31,7 +32,7 @@ export const FrontPage = () => {
         .catch((error) => {
           console.log(error);
         });
-    }, [searchValue]);
+    }, [searchValue, accessKey]);
     const inputChanged = (event) => {
         setSearchValue(event.target.value);
       }
