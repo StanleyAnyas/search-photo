@@ -5,7 +5,7 @@ import { FrontPage } from './components/Front-page';
 function App() {
   return (
     <div className="App">
-      <FrontPage />
+      <h1>Hello</h1>
     </div>
   );
 }
