@@ -12,6 +12,9 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 import { Grid } from '@mui/material';
 import axios from "axios";
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import DescriptionIcon from '@mui/icons-material/Description';
+import LocalSeeOutlinedIcon from '@mui/icons-material/LocalSeeOutlined';
 import { Card } from '@mui/material';
 import { CardContent } from '@mui/material';
 import { CardMedia } from '@mui/material';
@@ -20,6 +23,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import SvgIcon from '@mui/material/SvgIcon';
+
 
 
 export const FrontPage = () => { 
@@ -85,10 +90,10 @@ export const FrontPage = () => {
             <br />
             <br />
 
-            <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{paddingLeft: 5, paddingBottom: 7}}>
                 {images.map((image) => (
                     <Grid item xs={4} sm={4} md={4} key={image.id}>
-                        <Card sx={{ maxWidth: 400, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}>
+                        <Card sx={{ maxWidth: 600, height: 700, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}>
                             <CardMedia
                                 component="img"
                                 height="400"
@@ -96,16 +101,16 @@ export const FrontPage = () => {
                                 alt="Random"
                             />
                             <CardContent>
-                                {<span style={{color: "red"}}>Name: <Typography variant="body2" sx={{ fontSize: 35, fontFamily: "@fontsource/roboto/400.css" }} color="text.secondary">
-                                    {image.nameOfPicture}
+                                {<span><SvgIcon component={DriveFileRenameOutlineIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{ fontSize: 27, fontFamily: "@fontsource/roboto/400.css" }} color="text.secondary">
+                                    {image.nameOfPicture.length > 30 ? image.nameOfPicture.substring(0, 30) + "..." : image.nameOfPicture}
                                 </Typography> </span>}
-                                <br/>
-                                {<span style={{color: "red"}}>Photo description: <Typography variant="body2" sx={{fontSize: 20}} color="text.secondary">
-                                    {image.description}
-                                </Typography></span>}
-                                <br/>
-                                {<span style={{color: "red"}}>Photographer: <Typography variant="body2" sx={{ fontSize: 20}} color="text.secondary">
-                                    {image.name}
+                                <br />
+                                {<span><SvgIcon component={DescriptionIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{fontSize: 20}} color="text.secondary">
+                                    {image.description.length > 40 ? image.description.substring(0, 40) + "..." : image.description}
+                                </Typography></span>}   
+                                <br /> 
+                                {<span><SvgIcon component={LocalSeeOutlinedIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{ fontSize: 15}} color="text.secondary">
+                                    {image.name.length > 30 ? image.name.substring(0, 30) + "..." : image.name}
                                 </Typography></span>}
                             </CardContent>
                             <CardActions style={{display: "flex", justifyContent: "space-between"}}>
@@ -113,7 +118,7 @@ export const FrontPage = () => {
                                 <Button className="download-icon" size="small" href={image.url} startIcon={<DownloadIcon/>}  target="_blank">Download</Button>
                             </CardActions>
                         </Card>
-                        <br />
+                     
                     </Grid>
                 ))}
             </Grid>
