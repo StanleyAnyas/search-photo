@@ -3,8 +3,6 @@ import "../App.css";
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import IconButton from'@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
-import DownloadIcon from '@mui/icons-material/Download';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -18,7 +16,7 @@ import LocalSeeOutlinedIcon from '@mui/icons-material/LocalSeeOutlined';
 import { Card } from '@mui/material';
 import { CardContent } from '@mui/material';
 import { CardMedia } from '@mui/material';
-import { CardActions } from '@mui/material';
+//import { CardActions } from '@mui/material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -51,11 +49,6 @@ export const FrontPage = () => {
     const inputChanged = (event) => {
         setSearchValue(event.target.value);
       };
-
-    const sharePhoto = (imageurl, description) => {
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${description}&url=${imageurl}`;
-        window.open(twitterUrl, "_blank");
-    }
 
     return (
         <div>
@@ -115,12 +108,6 @@ export const FrontPage = () => {
                                 <Typography variant="body2" sx={{ fontSize: 15, textAlign: "left"}} color="text.secondary">
                                     {image.name.length > 30 ? image.name.substring(0, 30) + "..." : image.name}
                                 </Typography></span>}
-                                <div style={{ position: "absolute", bottom: -20, left: 0, right: 0 }}>
-                                    <CardActions style={{ justifyContent: "space-between", padding: "8px"}}>
-                                        <Button className="share-icon" size="small" startIcon={<ShareIcon/>} onClick={sharePhoto}>Share</Button>
-                                        <Button className="download-icon" size="small" href={image.url} startIcon={<DownloadIcon/>}  target="_blank">Download</Button>
-                                    </CardActions>
-                                </div>
                             </CardContent>
                             
                         </Card>
