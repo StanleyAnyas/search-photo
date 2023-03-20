@@ -93,30 +93,36 @@ export const FrontPage = () => {
             <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{paddingLeft: 5, paddingBottom: 7}}>
                 {images.map((image) => (
                     <Grid item xs={4} sm={4} md={4} key={image.id}>
-                        <Card sx={{ maxWidth: 600, height: 700, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}>
+                        <Card sx={{ maxWidth: 550, height: 750, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}>
                             <CardMedia
                                 component="img"
                                 height="400"
                                 image={image.url}
                                 alt="Random"
                             />
-                            <CardContent>
-                                {<span><SvgIcon component={DriveFileRenameOutlineIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{ fontSize: 27, fontFamily: "@fontsource/roboto/400.css" }} color="text.secondary">
+                            <CardContent sx={{flexGrow: 1, textAlign: "left", position: "relative"}}>
+                                {<span><SvgIcon component={DriveFileRenameOutlineIcon} sx={{ fontSize: 25, color: "red" }} />
+                                 <Typography variant="body2" sx={{ fontSize: 27, fontFamily: "@fontsource/roboto/400.css", textAlign: "left" }} color="text.secondary">
                                     {image.nameOfPicture.length > 30 ? image.nameOfPicture.substring(0, 30) + "..." : image.nameOfPicture}
                                 </Typography> </span>}
                                 <br />
-                                {<span><SvgIcon component={DescriptionIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{fontSize: 20}} color="text.secondary">
+                                {<span><SvgIcon component={DescriptionIcon} sx={{ fontSize: 25, color: "red" }} /> 
+                                <Typography variant="body2" sx={{fontSize: 20, textAlign: "left"}} color="text.secondary">
                                     {image.description.length > 40 ? image.description.substring(0, 40) + "..." : image.description}
                                 </Typography></span>}   
                                 <br /> 
-                                {<span><SvgIcon component={LocalSeeOutlinedIcon} sx={{ fontSize: 25, color: "red" }} /> <Typography variant="body2" sx={{ fontSize: 15}} color="text.secondary">
+                                {<span><SvgIcon component={LocalSeeOutlinedIcon} sx={{ fontSize: 25, color: "red" }} /> 
+                                <Typography variant="body2" sx={{ fontSize: 15, textAlign: "left"}} color="text.secondary">
                                     {image.name.length > 30 ? image.name.substring(0, 30) + "..." : image.name}
                                 </Typography></span>}
+                                <div style={{ position: "absolute", bottom: -20, left: 0, right: 0 }}>
+                                    <CardActions style={{ justifyContent: "space-between", padding: "8px"}}>
+                                        <Button className="share-icon" size="small" startIcon={<ShareIcon/>} onClick={sharePhoto}>Share</Button>
+                                        <Button className="download-icon" size="small" href={image.url} startIcon={<DownloadIcon/>}  target="_blank">Download</Button>
+                                    </CardActions>
+                                </div>
                             </CardContent>
-                            <CardActions style={{display: "flex", justifyContent: "space-between"}}>
-                                <Button className="share-icon" size="small" startIcon={<ShareIcon/>} onClick={sharePhoto}>Share</Button>
-                                <Button className="download-icon" size="small" href={image.url} startIcon={<DownloadIcon/>}  target="_blank">Download</Button>
-                            </CardActions>
+                            
                         </Card>
                      
                     </Grid>
